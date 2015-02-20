@@ -32,6 +32,8 @@ protocol SwiftrisDelegate {
     
     // Invoked when the game has reached a new level
     func gameDidLevelUp(swiftris: Swiftris)
+    
+    func gameDidReset(swiftris: Swiftris)
 }
 
 class Swiftris {
@@ -254,4 +256,14 @@ class Swiftris {
         }
         return allBlocks
     }
+    
+    func reset() {
+        score = 0
+        level = 1
+        fallingShape = nil
+        nextShape = nil
+        delegate?.gameDidEnd(self)
+        delegate?.gameDidBegin(self)
+    }
+    
 }

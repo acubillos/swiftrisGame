@@ -66,6 +66,11 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
         swiftris.rotateShape()
     }
     
+    
+    @IBAction func didReset(sender: UIButton) {
+        self.gameDidReset(swiftris)
+    }
+    
     @IBAction func didPan(sender: UIPanGestureRecognizer) {
         let currentPoint = sender.translationInView(self.view)
         if let originalPoint = panPointReference {
@@ -149,6 +154,10 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
         scene.playSound("drop.mp3")
 
         
+    }
+    
+    func gameDidReset(swiftris:Swiftris) {
+        swiftris.reset()
     }
     
     func gameShapeDidLand(swiftris: Swiftris) {
